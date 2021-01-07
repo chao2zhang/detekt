@@ -171,7 +171,7 @@ open class Detekt @Inject constructor(
     internal val sarifReportFile: Provider<RegularFile>
         @OutputFile
         @Optional
-        get() = getTargetFileProvider(report = reports.sarif, defaultEnabledValue = false)
+        get() = getTargetFileProvider(reports.sarif)
 
     internal val customReportFiles: ConfigurableFileCollection
         @OutputFiles
@@ -247,10 +247,9 @@ open class Detekt @Inject constructor(
     }
 
     private fun getTargetFileProvider(
-        report: DetektReport,
-        defaultEnabledValue: Boolean = DetektExtension.DEFAULT_REPORT_ENABLED_VALUE
+        report: DetektReport
     ): RegularFileProperty {
-        val isEnabled = report.enabled ?: defaultEnabledValue
+        val isEnabled = report.enabled ?: DetektExtension.DEFAULT_REPORT_ENABLED_VALUE
         val provider = objects.fileProperty()
         if (isEnabled) {
             val destination = report.destination ?: reportsDir.getOrElse(defaultReportsDir.asFile)
