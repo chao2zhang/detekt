@@ -40,6 +40,7 @@ subprojects {
             xml.enabled = true
             html.enabled = true
             txt.enabled = true
+            sarif.enabled = true
         }
     }
 }
@@ -70,6 +71,7 @@ val detektFormat by tasks.registering(Detekt::class) {
         xml.enabled = false
         html.enabled = false
         txt.enabled = false
+        sarif.enabled = false
     }
 }
 
@@ -88,6 +90,7 @@ val detektAll by tasks.registering(Detekt::class) {
         xml.enabled = false
         html.enabled = false
         txt.enabled = false
+        sarif.enabled = false
     }
 }
 
