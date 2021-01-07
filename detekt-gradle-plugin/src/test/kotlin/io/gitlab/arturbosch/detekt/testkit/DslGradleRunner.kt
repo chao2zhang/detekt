@@ -93,7 +93,7 @@ class DslGradleRunner @Suppress("LongParameterList") constructor(
     }
 
     private fun buildGradleRunner(tasks: List<String>): GradleRunner {
-        val args = mutableListOf("--stacktrace", "--info", "--build-cache")
+        val args = mutableListOf("--full-stacktrace", "--info", "--build-cache")
         if (dryRun) {
             args.add("-Pdetekt-dry-run=true")
         }
