@@ -6,29 +6,10 @@ import io.gitlab.arturbosch.detekt.internal.DetektJvm
 import io.gitlab.arturbosch.detekt.internal.DetektPlain
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.plugins.ReportingBasePlugin
-import org.gradle.api.reporting.ReportingExtension
 
 class DetektPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
-        project.pluginManager.apply(ReportingBasePlugin::class.java)
-        val extension = project.extensions.create(DETEKT_EXTENSION, DetektExtension::class.java)
-        extension.reportsDir = project.extensions.getByType(ReportingExtension::class.java).file("detekt")
-
-        val defaultConfigFile =
-            project.file("${project.rootProject.layout.projectDirectory.dir(CONFIG_DIR_NAME)}/$CONFIG_FILE")
-        if (defaultConfigFile.exists()) {
-            extension.config = project.files(defaultConfigFile)
-        }
-
-        configurePluginDependencies(project, extension)
-        setTaskDefaults(project)
-
-        project.registerDetektPlainTask(extension)
-        project.registerDetektJvmTasks(extension)
-        project.registerDetektAndroidTasks(extension)
-        project.registerGenerateConfigTask(extension)
     }
 
     private fun Project.registerDetektJvmTasks(extension: DetektExtension) {
@@ -99,6 +80,7 @@ class DetektPlugin : Plugin<Project> {
         internal const val CONFIG_FILE = "detekt.yml"
     }
 }
+
 
 const val CONFIGURATION_DETEKT = "detekt"
 const val CONFIGURATION_DETEKT_PLUGINS = "detektPlugins"
