@@ -73,13 +73,13 @@ class ThrowsCount(config: Config = Config.empty) : Rule(config) {
                     CodeSmell(
                         issue,
                         Entity.atName(function),
-                        "Too many throw statements in the function" +
-                                " ${function.nameAsSafeName}. The maximum number of allowed throw statements is $max."
+                        "Too many throw statements in the function ${function.nameAsSafeName}. The maximum number of allowed throw statements is $max."
                     )
                 )
             }
         }
     }
+
 
     companion object {
         const val MAX = "max"
