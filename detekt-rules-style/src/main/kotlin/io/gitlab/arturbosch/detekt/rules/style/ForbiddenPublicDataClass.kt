@@ -47,12 +47,14 @@ class ForbiddenPublicDataClass(config: Config = Config.empty) : Rule(config) {
         .map { it.simplePatternToRegex() }
         .toList()
 
+
     override fun visitClass(klass: KtClass) {
         val packageName = klass.containingKtFile.packageDirective?.packageNameExpression?.text
 
         if (packageName != null && ignorablePackages.any { it.matches(packageName) }) {
             return
         }
+
 
         val isPublicOrProtected = klass.visibilityModifierTypeOrDefault().let { visibility ->
             visibility != KtTokens.INTERNAL_KEYWORD && visibility != KtTokens.PRIVATE_KEYWORD
