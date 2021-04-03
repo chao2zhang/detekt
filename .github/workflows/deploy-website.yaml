@@ -94,7 +94,7 @@ jobs:
         chmod -R 777 _site/
         chmod -R 777 vendor/
         touch Gemfile.lock
-        chmod a+w Gemfile.lock
+        chmod a+rw Gemfile.lock
       working-directory: docs/
 
     - name: Install Ruby Dependencies
