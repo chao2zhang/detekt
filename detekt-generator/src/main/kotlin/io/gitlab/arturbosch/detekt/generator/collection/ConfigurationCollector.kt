@@ -120,6 +120,7 @@ class ConfigurationCollector {
         private val LIST_CREATORS = setOf(LIST_OF, EMPTY_LIST)
 
         private const val TYPE_STRING = "String"
+        private const val TYPE_REGEX = "Regex"
         private const val TYPE_BOOLEAN = "Boolean"
         private const val TYPE_INT = "Int"
         private const val TYPE_LONG = "Long"
@@ -147,7 +148,7 @@ class ConfigurationCollector {
         private fun KtProperty.formatDefaultValueAccordingToType(value: String): String {
             val defaultValue = value.withoutQuotes()
             return when (declaredTypeOrNull) {
-                TYPE_STRING -> "'$defaultValue'"
+                TYPE_STRING, TYPE_REGEX -> "'$defaultValue'"
                 TYPE_BOOLEAN, TYPE_INT, TYPE_LONG, TYPE_STRING_LIST -> defaultValue
                 else -> error("Unable to format unexpected type '$declaredTypeOrNull'")
             }

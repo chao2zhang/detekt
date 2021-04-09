@@ -9,6 +9,7 @@ fun config(defaultValue: Int): ReadOnlyProperty<ConfigAware, Int> = simpleConfig
 fun config(defaultValue: Long): ReadOnlyProperty<ConfigAware, Long> = simpleConfig(defaultValue)
 fun config(defaultValue: Boolean): ReadOnlyProperty<ConfigAware, Boolean> = simpleConfig(defaultValue)
 fun config(defaultValue: List<String>): ReadOnlyProperty<ConfigAware, List<String>> = ListConfigProperty(defaultValue)
+fun config(defaultValue: Regex): ReadOnlyProperty<ConfigAware, Regex> = simpleConfig(defaultValue)
 
 private fun <T : Any> simpleConfig(defaultValue: T): ReadOnlyProperty<ConfigAware, T> =
     SimpleConfigProperty(defaultValue)

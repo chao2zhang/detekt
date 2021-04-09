@@ -10,20 +10,14 @@ import io.gitlab.arturbosch.detekt.api.LazyRegex
 import io.gitlab.arturbosch.detekt.api.Rule
 import io.gitlab.arturbosch.detekt.api.Severity
 import io.gitlab.arturbosch.detekt.api.internal.ActiveByDefault
-import io.gitlab.arturbosch.detekt.rules.isAbstract
 import io.gitlab.arturbosch.detekt.rules.isExpect
-import io.gitlab.arturbosch.detekt.rules.isExternal
-import io.gitlab.arturbosch.detekt.rules.isMainFunction
-import io.gitlab.arturbosch.detekt.rules.isOpen
 import io.gitlab.arturbosch.detekt.rules.isOperator
-import io.gitlab.arturbosch.detekt.rules.isOverride
 import org.jetbrains.kotlin.descriptors.FunctionDescriptor
 import org.jetbrains.kotlin.descriptors.PropertyDescriptor
 import org.jetbrains.kotlin.lexer.KtSingleValueToken
 import org.jetbrains.kotlin.lexer.KtTokens
 import org.jetbrains.kotlin.name.Name
 import org.jetbrains.kotlin.psi.KtClass
-import org.jetbrains.kotlin.psi.KtClassOrObject
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.KtFunction
 import org.jetbrains.kotlin.psi.KtNameReferenceExpression
@@ -45,7 +39,7 @@ import org.jetbrains.kotlin.types.expressions.OperatorConventions
 import org.jetbrains.kotlin.util.OperatorNameConventions
 
 /**
- * Reports unused private properties, function parameters and functions.
+ * Reports unused private properties and functions.
  * If these private elements are unused they should be removed. Otherwise this dead code
  * can lead to confusion and potential bugs.
  *
@@ -69,7 +63,6 @@ class UnusedPrivateMember(config: Config = Config.empty) : Rule(config) {
     override fun visit(root: KtFile) {
         super.visit(root)
         root.acceptUnusedMemberVisitor(UnusedFunctionVisitor(allowedNames, bindingContext))
-        root.acceptUnusedMemberVisitor(UnusedParameterVisitor(allowedNames))
         root.acceptUnusedMemberVisitor(UnusedPropertyVisitor(allowedNames))
     }
 
@@ -191,71 +184,6 @@ private class UnusedFunctionVisitor(
         } ?: return
         functionReferences.getOrPut(name) { mutableListOf() }.add(expression)
     }
-}
-
-private class UnusedParameterVisitor(allowedNames: Regex) : UnusedMemberVisitor(allowedNames) {
-
-    private var unusedParameters: MutableSet<KtParameter> = mutableSetOf()
-
-    override fun getUnusedReports(issue: Issue): List<CodeSmell> {
-        return unusedParameters.map {
-            CodeSmell(issue, Entity.from(it), "Function parameter ${it.nameAsSafeName.identifier} is unused.")
-        }
-    }
-
-    override fun visitClassOrObject(klassOrObject: KtClassOrObject) {
-        if (klassOrObject.isExpect()) return
-
-        super.visitClassOrObject(klassOrObject)
-    }
-
-    override fun visitClass(klass: KtClass) {
-        if (klass.isInterface()) return
-
-        super.visitClass(klass)
-    }
-
-    override fun visitNamedFunction(function: KtNamedFunction) {
-        if (!function.isRelevant()) {
-            return
-        }
-
-        collectParameters(function)
-
-        super.visitNamedFunction(function)
-    }
-
-    private fun collectParameters(function: KtNamedFunction) {
-        val parameters = mutableMapOf<String, KtParameter>()
-        function.valueParameterList?.parameters?.forEach { parameter ->
-            val name = parameter.nameAsSafeName.identifier
-            if (!allowedNames.matches(name)) {
-                parameters[name] = parameter
-            }
-        }
-
-        function.accept(object : DetektVisitor() {
-            override fun visitProperty(property: KtProperty) {
-                if (property.isLocal) {
-                    val name = property.nameAsSafeName.identifier
-                    parameters.remove(name)
-                }
-                super.visitProperty(property)
-            }
-
-            override fun visitReferenceExpression(expression: KtReferenceExpression) {
-                parameters.remove(expression.text)
-                super.visitReferenceExpression(expression)
-            }
-        })
-
-        unusedParameters.addAll(parameters.values)
-    }
-
-    private fun KtNamedFunction.isRelevant() = !isAllowedToHaveUnusedParameters()
-
-    private fun KtNamedFunction.isAllowedToHaveUnusedParameters() =
-        isAbstract() || isOpen() || isOverride() || isOperator() || isMainFunction() || isExternal() || isExpect()
 }
 
 private class UnusedPropertyVisitor(allowedNames: Regex) : UnusedMemberVisitor(allowedNames) {
