@@ -32,7 +32,7 @@
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -386,7 +386,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -457,7 +457,8 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p><img src="images/detekt_in_action.png" alt="detekt in action" title="detekt in action" /></p>
+  <p><img src="images/logo.svg" alt="detekt logo" title="detekt logo" />
+<img src="images/detekt_in_action.png" alt="detekt in action" title="detekt in action" /></p>
 
 <h3 id="features">Features</h3>
 
@@ -479,18 +480,12 @@ $('#toc').on('click', 'a', function() {
 
 <p>Apply the following configuration to your Gradle project build file:</p>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">buildscript</span> <span class="p">{</span>
-    <span class="nf">repositories</span> <span class="p">{</span>
-        <span class="nf">jcenter</span><span class="p">()</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nf">plugins</span> <span class="p">{</span>
-    <span class="nf">id</span><span class="p">(</span><span class="s">"io.gitlab.arturbosch.detekt"</span><span class="p">).</span><span class="nf">version</span><span class="p">(</span><span class="s">"1.16.0"</span><span class="p">)</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">plugins</span> <span class="p">{</span>
+    <span class="nf">id</span><span class="p">(</span><span class="s">"io.gitlab.arturbosch.detekt"</span><span class="p">).</span><span class="nf">version</span><span class="p">(</span><span class="s">"1.17.0-RC3"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="nf">repositories</span> <span class="p">{</span>
-    <span class="nf">jcenter</span><span class="p">()</span>
+    <span class="nf">mavenCentral</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -507,7 +502,7 @@ slim down the configuration file to only the changes from the default configurat
 <code class="language-plaintext highlighter-rouge">buildUponDefaultConfig</code> option:</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">detekt</span> <span class="p">{</span>
-    <span class="n">toolVersion</span> <span class="p">=</span> <span class="s">"1.16.0"</span>
+    <span class="n">toolVersion</span> <span class="p">=</span> <span class="s">"1.17.0-RC3"</span>
     <span class="n">config</span> <span class="p">=</span> <span class="nf">files</span><span class="p">(</span><span class="s">"config/detekt/detekt.yml"</span><span class="p">)</span>
     <span class="n">buildUponDefaultConfig</span> <span class="p">=</span> <span class="k">true</span>
 <span class="p">}</span>
@@ -538,7 +533,7 @@ slim down the configuration file to only the changes from the default configurat
 which can be easily added to the gradle configuration:</p>
 
 <div class="language-gradle highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">dependencies</span> <span class="o">{</span>
-    <span class="n">detektPlugins</span> <span class="s2">"io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0"</span>
+    <span class="n">detektPlugins</span> <span class="s2">"io.gitlab.arturbosch.detekt:detekt-formatting:1.17.0-RC3"</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -561,7 +556,7 @@ which can be easily added to the gradle configuration:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 10, 2021 <br />
+ Site last generated: May 13, 2021 <br />
                 </div>
             </div>
 </footer>
