@@ -3,6 +3,8 @@ $dokka.linkExtension:md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal////PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/index.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal//config/#TypeParam(bounds=[kotlin.Any])#kotlin.Function1[TypeParam(bounds=[kotlin.Any]),TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/config.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal//config/#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/config.md
+$dokka.location:io.gitlab.arturbosch.detekt.api.internal//configWithAndroidVariants/#TypeParam(bounds=[kotlin.Any])#TypeParam(bounds=[kotlin.Any])#kotlin.Function1[TypeParam(bounds=[kotlin.Any]),TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/config-with-android-variants.md
+$dokka.location:io.gitlab.arturbosch.detekt.api.internal//configWithAndroidVariants/#TypeParam(bounds=[kotlin.Any])#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/config-with-android-variants.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal//configWithFallback/#kotlin.String#TypeParam(bounds=[kotlin.Any])#kotlin.Function1[TypeParam(bounds=[kotlin.Any]),TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/config-with-fallback.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal//configWithFallback/#kotlin.String#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/config-with-fallback.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal//createPathFilters/io.gitlab.arturbosch.detekt.api.Config#/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/create-path-filters.md
@@ -16,6 +18,9 @@ $dokka.location:io.gitlab.arturbosch.detekt.api.internal//whichOS/#/PointingToDe
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal/ActiveByDefault///PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-active-by-default/index.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal/ActiveByDefault/ActiveByDefault/#kotlin.String/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-active-by-default/-active-by-default.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal/ActiveByDefault/since/#/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-active-by-default/since.md
+$dokka.location:io.gitlab.arturbosch.detekt.api.internal/AutoCorrectable///PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-auto-correctable/index.md
+$dokka.location:io.gitlab.arturbosch.detekt.api.internal/AutoCorrectable/AutoCorrectable/#kotlin.String/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-auto-correctable/-auto-correctable.md
+$dokka.location:io.gitlab.arturbosch.detekt.api.internal/AutoCorrectable/since/#/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-auto-correctable/since.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal/BaseRule///PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-base-rule/index.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal/BaseRule/BaseRule/#io.gitlab.arturbosch.detekt.api.Context/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-base-rule/-base-rule.md
 $dokka.location:io.gitlab.arturbosch.detekt.api.internal/BaseRule/bindingContext/#/PointingToDeclaration/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-base-rule/binding-context.md

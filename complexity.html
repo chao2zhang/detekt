@@ -245,6 +245,13 @@
           
           
           
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
+          
+          
+          
+          
       </ul>
    </li>
      
@@ -684,6 +691,11 @@ Prefer smaller methods with clear names that describe their functionality clearl
 
     <p>number of lines in a method to trigger the rule</p>
   </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ignoreAnnotated</code> (default: <code class="language-plaintext highlighter-rouge">[]</code>)</p>
+
+    <p>ignore long methods in the context of these annotation class names</p>
+  </li>
 </ul>
 
 <h3 id="longparameterlist">LongParameterList</h3>
@@ -727,9 +739,7 @@ Prefer smaller methods with clear names that describe their functionality clearl
   <li>
     <p><code class="language-plaintext highlighter-rouge">ignoreAnnotated</code> (default: <code class="language-plaintext highlighter-rouge">[]</code>)</p>
 
-    <p>ignore long parameters list for constructors or functions in the context of these
-annotation class names ; (e.g. [‘Inject’, ‘Module’, ‘Suppress’]);
-the most common case is for dependency injection where constructors are annotated with @Inject.</p>
+    <p>ignore long parameters list for constructors, functions or their parameters in the context of these annotation class names; (e.g. [‘Inject’, ‘Module’, ‘Suppress’, ‘Value’]); the most common cases are for dependency injection where constructors are annotated with <code class="language-plaintext highlighter-rouge">@Inject</code> or parameters are annotated with <code class="language-plaintext highlighter-rouge">@Value</code> and should not be counted for the rule to trigger</p>
   </li>
 </ul>
 
@@ -974,7 +984,7 @@ which clearly belongs together in separate parts of the code.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: May 13, 2021 <br />
+ Site last generated: Jun 29, 2021 <br />
                 </div>
             </div>
 </footer>

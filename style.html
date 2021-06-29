@@ -245,6 +245,13 @@
           
           
           
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
+          
+          
+          
+          
       </ul>
    </li>
      
@@ -789,8 +796,7 @@ development. Offending code comments will then be reported.</p>
   <li>
     <p><code class="language-plaintext highlighter-rouge">allowedPatterns</code> (default: <code class="language-plaintext highlighter-rouge">''</code>)</p>
 
-    <p>ignores comments which match the specified regular expression.
-For example <code class="language-plaintext highlighter-rouge">Ticket|Task</code>.</p>
+    <p>ignores comments which match the specified regular expression. For example <code class="language-plaintext highlighter-rouge">Ticket|Task</code>.</p>
   </li>
 </ul>
 
@@ -852,10 +858,7 @@ Detekt will then report all methods invocation that are forbidden.</p>
   <li>
     <p><code class="language-plaintext highlighter-rouge">methods</code> (default: <code class="language-plaintext highlighter-rouge">['kotlin.io.println', 'kotlin.io.print']</code>)</p>
 
-    <p>Comma separated list of fully qualified method signatures which are forbidden.
-Methods can be defined without full signature (i.e. <code class="language-plaintext highlighter-rouge">java.time.LocalDate.now</code>) which will report calls of all methods
-with this name or with full signature (i.e. <code class="language-plaintext highlighter-rouge">java.time.LocalDate(java.time.Clock)</code>) which would report only call
-with this concrete signature.</p>
+    <p>Comma separated list of fully qualified method signatures which are forbidden. Methods can be defined without full signature (i.e. <code class="language-plaintext highlighter-rouge">java.time.LocalDate.now</code>) which will report calls of all methods with this name or with full signature (i.e. <code class="language-plaintext highlighter-rouge">java.time.LocalDate(java.time.Clock)</code>) which would report only call with this concrete signature.</p>
   </li>
 </ul>
 
@@ -962,7 +965,7 @@ as a <code class="language-plaintext highlighter-rouge">const val</code>.</p>
     <p>if actual functions should be ignored</p>
   </li>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">excludedFunctions</code> (default: <code class="language-plaintext highlighter-rouge">'describeContents'</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">excludedFunctions</code> (default: <code class="language-plaintext highlighter-rouge">''</code>)</p>
 
     <p>excluded functions</p>
   </li>
@@ -1098,8 +1101,7 @@ describing what the magic number means.</p>
   <li>
     <p><code class="language-plaintext highlighter-rouge">ignoreLocalVariableDeclaration</code> (default: <code class="language-plaintext highlighter-rouge">false</code>)</p>
 
-    <p>whether magic numbers in local variable declarations should be
-ignored</p>
+    <p>whether magic numbers in local variable declarations should be ignored</p>
   </li>
   <li>
     <p><code class="language-plaintext highlighter-rouge">ignoreConstantDeclaration</code> (default: <code class="language-plaintext highlighter-rouge">true</code>)</p>
@@ -1109,8 +1111,7 @@ ignored</p>
   <li>
     <p><code class="language-plaintext highlighter-rouge">ignoreCompanionObjectPropertyDeclaration</code> (default: <code class="language-plaintext highlighter-rouge">true</code>)</p>
 
-    <p>whether magic numbers in companion object
-declarations should be ignored</p>
+    <p>whether magic numbers in companion object declarations should be ignored</p>
   </li>
   <li>
     <p><code class="language-plaintext highlighter-rouge">ignoreAnnotation</code> (default: <code class="language-plaintext highlighter-rouge">false</code>)</p>
@@ -1302,12 +1303,12 @@ taken from: http://kotlinlang.org/docs/reference/coding-conventions.html#modifie
 
 <h4 id="noncompliant-code-23">Noncompliant Code:</h4>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">lateinit</span> <span class="k">internal</span> <span class="k">private</span> <span class="kd">val</span> <span class="py">str</span><span class="p">:</span> <span class="nc">String</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">lateinit</span> <span class="k">internal</span> <span class="kd">val</span> <span class="py">str</span><span class="p">:</span> <span class="nc">String</span>
 </code></pre></div></div>
 
 <h4 id="compliant-code-18">Compliant Code:</h4>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">internal</span> <span class="k">lateinit</span> <span class="kd">val</span> <span class="py">str</span><span class="p">:</span> <span class="nc">String</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">internal</span> <span class="k">lateinit</span> <span class="kd">val</span> <span class="py">str</span><span class="p">:</span> <span class="nc">String</span>
 </code></pre></div></div>
 
 <h3 id="multilinelambdaitparameter">MultilineLambdaItParameter</h3>
@@ -1327,44 +1328,44 @@ explicitly.</p>
 <h4 id="noncompliant-code-24">Noncompliant Code:</h4>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">digits</span> <span class="p">=</span> <span class="mi">1234</span><span class="p">.</span><span class="nf">let</span> <span class="p">{</span>
-<span class="nf">println</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
-<span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+    <span class="nf">println</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+    <span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">val</span> <span class="py">digits</span> <span class="p">=</span> <span class="mi">1234</span><span class="p">.</span><span class="nf">let</span> <span class="p">{</span> <span class="n">it</span> <span class="p">-&gt;</span>
-<span class="nf">println</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
-<span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+    <span class="nf">println</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+    <span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">val</span> <span class="py">flat</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="nf">listOf</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nf">listOf</span><span class="p">(</span><span class="mi">2</span><span class="p">)).</span><span class="nf">mapIndexed</span> <span class="p">{</span> <span class="n">index</span><span class="p">,</span> <span class="n">it</span> <span class="p">-&gt;</span>
-<span class="nf">println</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
-<span class="n">it</span> <span class="p">+</span> <span class="n">index</span>
+    <span class="nf">println</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+    <span class="n">it</span> <span class="p">+</span> <span class="n">index</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <h4 id="compliant-code-19">Compliant Code:</h4>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">digits</span> <span class="p">=</span> <span class="mi">1234</span><span class="p">.</span><span class="nf">let</span> <span class="p">{</span> <span class="n">explicitParameterName</span> <span class="p">-&gt;</span>
-<span class="nf">println</span><span class="p">(</span><span class="n">explicitParameterName</span><span class="p">)</span>
-<span class="nf">listOf</span><span class="p">(</span><span class="n">explicitParameterName</span><span class="p">)</span>
+    <span class="nf">println</span><span class="p">(</span><span class="n">explicitParameterName</span><span class="p">)</span>
+    <span class="nf">listOf</span><span class="p">(</span><span class="n">explicitParameterName</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">val</span> <span class="py">lambda</span> <span class="p">=</span> <span class="p">{</span> <span class="n">item</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">that</span><span class="p">:</span> <span class="nc">String</span> <span class="p">-&gt;</span>
-<span class="nf">println</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="n">item</span><span class="p">.</span><span class="nf">toString</span><span class="p">()</span> <span class="p">+</span> <span class="n">that</span>
+    <span class="nf">println</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">item</span><span class="p">.</span><span class="nf">toString</span><span class="p">()</span> <span class="p">+</span> <span class="n">that</span>
 <span class="p">}</span>
 
 <span class="kd">val</span> <span class="py">digits</span> <span class="p">=</span> <span class="mi">1234</span><span class="p">.</span><span class="nf">let</span> <span class="p">{</span> <span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">}</span>
 <span class="kd">val</span> <span class="py">digits</span> <span class="p">=</span> <span class="mi">1234</span><span class="p">.</span><span class="nf">let</span> <span class="p">{</span>
-<span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+    <span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="kd">val</span> <span class="py">digits</span> <span class="p">=</span> <span class="mi">1234</span><span class="p">.</span><span class="nf">let</span> <span class="p">{</span> <span class="n">it</span> <span class="p">-&gt;</span> <span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">}</span>
 <span class="kd">val</span> <span class="py">digits</span> <span class="p">=</span> <span class="mi">1234</span><span class="p">.</span><span class="nf">let</span> <span class="p">{</span> <span class="n">it</span> <span class="p">-&gt;</span>
-<span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+    <span class="nf">listOf</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="kd">val</span> <span class="py">digits</span> <span class="p">=</span> <span class="mi">1234</span><span class="p">.</span><span class="nf">let</span> <span class="p">{</span> <span class="n">explicit</span> <span class="p">-&gt;</span> <span class="nf">listOf</span><span class="p">(</span><span class="n">explicit</span><span class="p">)</span> <span class="p">}</span>
 <span class="kd">val</span> <span class="py">digits</span> <span class="p">=</span> <span class="mi">1234</span><span class="p">.</span><span class="nf">let</span> <span class="p">{</span> <span class="n">explicit</span> <span class="p">-&gt;</span>
-<span class="nf">listOf</span><span class="p">(</span><span class="n">explicit</span><span class="p">)</span>
+    <span class="nf">listOf</span><span class="p">(</span><span class="n">explicit</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1583,14 +1584,14 @@ members. Consider using <code class="language-plaintext highlighter-rouge">priva
 <h4 id="noncompliant-code-32">Noncompliant Code:</h4>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="kd">val</span> <span class="py">x</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"string"</span>
+    <span class="kd">val</span> <span class="py">x</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"string"</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <h4 id="compliant-code-27">Compliant Code:</h4>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="kd">val</span> <span class="py">x</span> <span class="p">=</span> <span class="s">"string"</span>
+    <span class="kd">val</span> <span class="py">x</span> <span class="p">=</span> <span class="s">"string"</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1836,6 +1837,11 @@ to confusion. Instead prefer to limit the amount of <code class="language-plaint
 
     <p>maximum amount of throw statements in a method</p>
   </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">excludeGuardClauses</code> (default: <code class="language-plaintext highlighter-rouge">false</code>)</p>
+
+    <p>if set to true, guard clauses do not count towards the allowed throws count</p>
+  </li>
 </ul>
 
 <h4 id="noncompliant-code-39">Noncompliant Code:</h4>
@@ -1883,8 +1889,7 @@ explicitly ignored. For floats and doubles, anything to the right of the decimal
   <li>
     <p><code class="language-plaintext highlighter-rouge">acceptableDecimalLength</code> (default: <code class="language-plaintext highlighter-rouge">5</code>)</p>
 
-    <p>Length under which decimal base 10 literals are not required to have
-underscores</p>
+    <p>Length under which decimal base 10 literals are not required to have underscores</p>
   </li>
 </ul>
 
@@ -1918,8 +1923,7 @@ refactored into concrete classes.</p>
   <li>
     <p><code class="language-plaintext highlighter-rouge">excludeAnnotatedClasses</code> (default: <code class="language-plaintext highlighter-rouge">['dagger.Module']</code>)</p>
 
-    <p>Allows you to provide a list of annotations that disable
-this check.</p>
+    <p>Allows you to provide a list of annotations that disable this check.</p>
   </li>
 </ul>
 
@@ -2214,8 +2218,8 @@ Prefer them instead of manually throwing an IllegalStateException.</p>
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">throw</span> <span class="nc">IllegalStateException</span><span class="p">(</span><span class="s">"value should not be null"</span><span class="p">)</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">throw</span> <span class="nc">IllegalStateException</span><span class="p">(</span><span class="s">"value is $value but should be at least 0"</span><span class="p">)</span>
 <span class="k">when</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-<span class="mi">1</span> <span class="p">-&gt;</span> <span class="nf">doSomething</span><span class="p">()</span>
-<span class="k">else</span> <span class="p">-&gt;</span> <span class="k">throw</span> <span class="nc">IllegalStateException</span><span class="p">(</span><span class="s">"Unexpected value"</span><span class="p">)</span>
+    <span class="mi">1</span> <span class="p">-&gt;</span> <span class="nf">doSomething</span><span class="p">()</span>
+    <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">throw</span> <span class="nc">IllegalStateException</span><span class="p">(</span><span class="s">"Unexpected value"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -2224,8 +2228,8 @@ Prefer them instead of manually throwing an IllegalStateException.</p>
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">checkNotNull</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span> <span class="s">"value should not be null"</span> <span class="p">}</span>
 <span class="nf">check</span><span class="p">(</span><span class="n">value</span> <span class="p">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="s">"value is $value but should be at least 0"</span> <span class="p">}</span>
 <span class="k">when</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-<span class="mi">1</span> <span class="p">-&gt;</span> <span class="nf">doSomething</span><span class="p">()</span>
-<span class="k">else</span> <span class="p">-&gt;</span> <span class="nf">error</span><span class="p">(</span><span class="s">"Unexpected value"</span><span class="p">)</span>
+    <span class="mi">1</span> <span class="p">-&gt;</span> <span class="nf">doSomething</span><span class="p">()</span>
+    <span class="k">else</span> <span class="p">-&gt;</span> <span class="nf">error</span><span class="p">(</span><span class="s">"Unexpected value"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -2251,7 +2255,7 @@ and generate <code class="language-plaintext highlighter-rouge">hashCode</code>,
   <li>
     <p><code class="language-plaintext highlighter-rouge">allowVars</code> (default: <code class="language-plaintext highlighter-rouge">false</code>)</p>
 
-    <p>allows to relax this rule in order to exclude classes that contains one (or more) Vars</p>
+    <p>allows to relax this rule in order to exclude classes that contains one (or more) vars</p>
   </li>
 </ul>
 
@@ -2344,8 +2348,8 @@ and generate <code class="language-plaintext highlighter-rouge">hashCode</code>,
 <h4 id="noncompliant-code-55">Noncompliant Code:</h4>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">when</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">null</span> <span class="p">-&gt;</span> <span class="k">true</span>
-<span class="k">else</span> <span class="p">-&gt;</span> <span class="k">false</span>
+    <span class="k">null</span> <span class="p">-&gt;</span> <span class="k">true</span>
+    <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">false</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -2533,6 +2537,8 @@ Val declarations are assign-once (read-only), which makes understanding the curr
 
 <p><strong>Active by default</strong>: Yes - Since v1.16.0</p>
 
+<p><strong>Requires Type Resolution</strong></p>
+
 <p><strong>Debt</strong>: 5min</p>
 
 <p><strong>Aliases</strong>: CanBeVal</p>
@@ -2573,8 +2579,7 @@ When suppressing an issue of WildcardImport in the baseline file, make sure to s
   <li>
     <p><code class="language-plaintext highlighter-rouge">excludeImports</code> (default: <code class="language-plaintext highlighter-rouge">['java.util.*', 'kotlinx.android.synthetic.*']</code>)</p>
 
-    <p>Define a list of package names that should be allowed to be imported
-with wildcard imports.</p>
+    <p>Define a list of package names that should be allowed to be imported with wildcard imports.</p>
   </li>
 </ul>
 
@@ -2615,7 +2620,7 @@ with wildcard imports.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: May 13, 2021 <br />
+ Site last generated: Jun 29, 2021 <br />
                 </div>
             </div>
 </footer>

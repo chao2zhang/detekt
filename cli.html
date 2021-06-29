@@ -245,6 +245,13 @@
           
           
           
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
+          
+          
+          
+          
       </ul>
    </li>
      
@@ -467,9 +474,9 @@ detekt <span class="o">[</span>options]
 </code></pre></div></div>
 
 <h3 id="any-os">Any OS:</h3>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSLO</span> https://github.com/detekt/detekt/releases/download/v1.17.0-RC3/detekt-cli-1.17.0-RC3.zip
-unzip detekt-cli-1.17.0-RC3.zip
-./detekt-cli-1.17.0-RC3/bin/detekt-cli <span class="nt">--help</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSLO</span> https://github.com/detekt/detekt/releases/download/v1.17.1/detekt-cli-1.17.1.zip
+unzip detekt-cli-1.17.1.zip
+./detekt-cli-1.17.1/bin/detekt-cli <span class="nt">--help</span>
 </code></pre></div></div>
 
 <h2 id="use-the-cli">Use the cli</h2>
@@ -572,13 +579,13 @@ unzip detekt-cli-1.17.0-RC3.zip
     --jvm-target
       EXPERIMENTAL: Target version of the generated JVM bytecode that was 
       generated during compilation and is now being used for type resolution 
-      (1.6, 1.8, 9, 10, 11 or 12)
-      Default: JVM_1_6
-      Possible Values: [JVM_1_6, JVM_1_8, JVM_9, JVM_10, JVM_11, JVM_12, JVM_13, JVM_14, JVM_15]
+      (1.6, 1.8, 9, 10, 11, 12, 13, 14, 15 or 16)
+      Default: JVM_1_8
+      Possible Values: [JVM_1_6, JVM_1_8, JVM_9, JVM_10, JVM_11, JVM_12, JVM_13, JVM_14, JVM_15, JVM_16]
     --language-version
       EXPERIMENTAL: Compatibility mode for Kotlin language version X.Y, 
       reports errors for all language features that came out later (1.0, 1.1, 
-      1.2, 1.3, 1.4)
+      1.2, 1.3, 1.4 or 1.5)
       Possible Values: [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6]
     --max-issues
       Return exit code 0 only when found issues count does not exceed 
@@ -618,7 +625,7 @@ unzip detekt-cli-1.17.0-RC3.zip
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: May 13, 2021 <br />
+ Site last generated: Jun 29, 2021 <br />
                 </div>
             </div>
 </footer>
